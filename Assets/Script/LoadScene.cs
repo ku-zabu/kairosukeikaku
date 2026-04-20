@@ -5,5 +5,5 @@ using UnityEngine.SceneManagement;
 
 public class Scene : MonoBehaviour
 {
-    [SerializeField] private 
+  //  [SerializeField] private 
 }

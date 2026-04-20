@@ -35,7 +35,7 @@ public class PlayerMove : MonoBehaviour
                 360 * Time.deltaTime);
         }
 
-        if (input.actions["Q"].IsPressed())
+        if (input.actions["Q"].WasPressedThisFrame())
         
         {
             Debug.Log("Q‚ª‰Ÿ‚³‚ê‚½");

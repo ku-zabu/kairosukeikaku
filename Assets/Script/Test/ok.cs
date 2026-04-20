@@ -1,18 +1,22 @@
 using UnityEngine;
-using UnityEngine.InputSystem;
+using System.Collections;
+using System.Collections.Generic;
 
-public class Controller : MonoBehaviour
+
+public class ok : MonoBehaviour
 {
-    private InputAction Q;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        Q= GetComponent<InputAction>();
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //if (InputAction.)
+        if (Input.GetKeyDown(KeyCode.Q))
+        {
+            Debug.Log("Q‚ª‰Ÿ‚³‚ê‚½");
+        }
     }
 }
