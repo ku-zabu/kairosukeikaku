@@ -17,8 +17,6 @@ public class Playerontroller : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         rb.freezeRotation = true;
         input = GetComponent<PlayerInput>();
-
-        InputSystem.pollingFrequency = 1;
     }
 
     // Update is called once per frame
@@ -37,7 +35,7 @@ public class Playerontroller : MonoBehaviour
                 360 * Time.deltaTime);
         }
 
-        if (input.actions["Q"].IsPressed())
+        if (input.actions["Q"].WasPressedThisFrame())
 
         {
             Debug.Log("Q‚ª‰Ÿ‚³‚ê‚½");
