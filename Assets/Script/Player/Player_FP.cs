@@ -3,11 +3,11 @@ using UnityEngine.InputSystem;
 
 public class Player_FP : MonoBehaviour
 {
+    //カメラの回転を制御するための変数
     Transform cam;
-    float xRotation = 0f;
-    float lookSpeedX = 10;
-    float lookSpeedY = 10;
-    int camMoveX = 1, camMoveY = 1;
+    float xRotation = 0f;                       //カメラの上下の回転量
+    float lookSpeedX = 10, lookSpeedY = 10;     //カメラの回転速度
+    bool lookMoveX = false, lookMoveY = false;  //リバース機能
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -27,8 +27,9 @@ public class Player_FP : MonoBehaviour
     void OnLook(InputValue value)
     {
         Vector2 input = value.Get<Vector2>();
-        var xRot = input.y * lookSpeedX * camMoveX * Time.deltaTime;
-        var yRot = input.x * lookSpeedY * camMoveY * Time.deltaTime;
+        var xRot = input.y * lookSpeedX * Time.deltaTime * (lookMoveX ? 1 : -1);
+        var yRot = input.x * lookSpeedY * Time.deltaTime * (lookMoveY ? -1 : 1);
+
         xRotation += xRot;
         xRotation = Mathf.Clamp(xRotation, -90f, 45f);
 
