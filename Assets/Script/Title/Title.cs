@@ -1,3 +1,4 @@
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -11,7 +12,7 @@ public class Title : MonoBehaviour
     //設定のオブジェクト
     private GameObject option;
     //ゲームシーン
-    [SerializeField] private Scene gameScene;
+    [SerializeField] private SceneAsset gameScene;
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -50,6 +51,9 @@ public class Title : MonoBehaviour
         option.SetActive(true);
     }
 
+    /// <summary>
+    /// ゲームを終了する関数
+    /// </summary>
     public void QuitGameButton()
     {
 #if UNITY_EDITOR

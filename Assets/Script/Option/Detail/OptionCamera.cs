@@ -78,7 +78,10 @@ public class OptionCamera : MonoBehaviour, OptionTemp
         buttons[t, 1].colors = colors;
     }
 
-
+    /// <summary>
+    /// 設定の値をスライダーとボタンに反映する関数
+    /// </summary>
+    /// <param name="all"></param>
     public void SetData(AllOption all)
     {
         var cameraOption = all.cameraOption;
@@ -90,6 +93,10 @@ public class OptionCamera : MonoBehaviour, OptionTemp
         ChangedColor(1, move[1]);
     }
 
+    /// <summary>
+    /// スライダーの値とボタンの状態から、カメラ設定のオプションデータを反映する関数
+    /// </summary>
+    /// <returns></returns>
     public AllOption GetData()
     {
 

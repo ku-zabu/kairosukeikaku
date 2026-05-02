@@ -50,6 +50,7 @@ public class OptionAudio : MonoBehaviour, OptionTemp
             return;
         }
     }
+
     /// <summary>
     /// 数値の視覚化
     /// </summary>
@@ -65,6 +66,10 @@ public class OptionAudio : MonoBehaviour, OptionTemp
         dropdowns[index].text = sliderValue.ToString("F1")+"%";
     }
 
+    /// <summary>
+    /// 設定の数値をスライダーに反映させるメソッド
+    /// </summary>
+    /// <param name="all"></param>
     public void SetData(AllOption all)
     {
         var volumeOption = all.volumeOption;
@@ -76,6 +81,10 @@ public class OptionAudio : MonoBehaviour, OptionTemp
         OnSliderValueChanged(2);
     }
 
+    /// <summary>
+    /// スライダーの値を設定に反映させるメソッド
+    /// </summary>
+    /// <returns></returns>
     public AllOption GetData()
     {
         var volumeOption = new VolumeOption

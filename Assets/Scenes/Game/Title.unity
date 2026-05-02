@@ -493,7 +493,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Title
   OptionDataBox: {fileID: 7400670258722447430, guid: 9fbdf885b76a12a4eb62ed8a65e5395f, type: 3}
-  gameScene: {fileID: 0}
+  gameScene: {fileID: 102900000, guid: d1476fb3988a8504a84db81469f97ec2, type: 3}
 --- !u!1 &995782877
 GameObject:
   m_ObjectHideFlags: 0
