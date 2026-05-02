@@ -29,18 +29,13 @@ public class Player_Canvas : MonoBehaviour
         animator.SetBool("OpenMenu", openMenu);
     }
 
-    public void PossibleAction()
+    public void WhatPossibleAction(bool active)
     {
-        actionTxt.SetActive(true);
-    }
-
-    public void InPossibleAction()
-    {
-        actionTxt.SetActive(false);
+        actionTxt.SetActive(active);
     }
 
     public void GetArtifact()
     {
-        artifactAnime.SetBool("Get",true);
+        artifactAnime.SetBool("Get", true);
     }
 }

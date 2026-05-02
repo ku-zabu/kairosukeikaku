@@ -86,7 +86,7 @@ public class Player_FP : MonoBehaviour
         Vector3 center = new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f);
         Ray ray = camera.ScreenPointToRay(center);
         RaycastHit hit;
-        if (Physics.Raycast(ray, out hit, 5f))
+        if (Physics.Raycast(ray, out hit, 2.5f))
         {
             if (attentionObj != hit.collider.gameObject)
             {
@@ -100,9 +100,9 @@ public class Player_FP : MonoBehaviour
             item = null;
         }
         if (item != null)
-            canvas.PossibleAction();
+            canvas.WhatPossibleAction(true);
         else
-            canvas.InPossibleAction();
+            canvas.WhatPossibleAction(false);
     }
 
     /// <summary>
@@ -151,9 +151,21 @@ public class Player_FP : MonoBehaviour
         item = null;
     }
 
-    public void GetArtifact()
+    public void StopCameraAndMove()
     {
-        artifactActive = true;
-        canvas.GetArtifact();
+        checkMenu = true;
+        Cursor.lockState = CursorLockMode.Confined;
+        Cursor.visible = true;
+    }
+
+    public void GetArtifact(bool c)
+    {
+        if (c)
+        {
+            canvas.GetArtifact();
+            artifactActive = true;        
+        }
+        Cursor.lockState = CursorLockMode.Locked;
+        checkMenu = false;
     }
 }
