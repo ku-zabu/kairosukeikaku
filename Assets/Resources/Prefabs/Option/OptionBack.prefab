@@ -3070,9 +3070,9 @@ RectTransform:
   - {fileID: 4348721394155965819}
   m_Father: {fileID: 774182358275975265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -550}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &3227072198971168898
@@ -4701,10 +4701,10 @@ RectTransform:
   - {fileID: 5745527792956784794}
   m_Father: {fileID: 580795155266359307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 1}
-  m_AnchorMax: {x: 0.5, y: 1}
-  m_AnchoredPosition: {x: -566, y: 0.001040835}
-  m_SizeDelta: {x: 1132, y: 1100.135}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
+  m_AnchoredPosition: {x: 0, y: -0.0009765625}
+  m_SizeDelta: {x: 0, y: 207.506}
   m_Pivot: {x: 0, y: 1}
 --- !u!1 &4930317211518494638
 GameObject:
@@ -5352,7 +5352,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 31a19414c41e5ae4aae2af33fee712f6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Mask
-  m_ShowMaskGraphic: 0
+  m_ShowMaskGraphic: 1
 --- !u!1 &5594635263342335856
 GameObject:
   m_ObjectHideFlags: 0
@@ -5796,6 +5796,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de07fad676383634bb314b4e5a3e2a71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Option
+  optionDataSet: {fileID: 0}
 --- !u!1 &6563634652091533351
 GameObject:
   m_ObjectHideFlags: 0
@@ -6245,9 +6246,9 @@ RectTransform:
   - {fileID: 832754189428936898}
   m_Father: {fileID: 774182358275975265}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMin: {x: 0.5, y: 1}
+  m_AnchorMax: {x: 0.5, y: 1}
+  m_AnchoredPosition: {x: 0, y: -553}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &7259282437096320690
@@ -7685,8 +7686,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6523414357073812063}
   m_HandleRect: {fileID: 2421836252245668751}
   m_Direction: 2
-  m_Value: 0.99999785
-  m_Size: 0.59083664
+  m_Value: 1.0000046
+  m_Size: 0.7580122
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

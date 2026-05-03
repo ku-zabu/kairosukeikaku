@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2866257413078497170}
   - component: {fileID: 4337341180585250760}
   - component: {fileID: 4813417702658899209}
-  - component: {fileID: 6065841061628963916}
   m_Layer: 0
   m_Name: ArtifactBox
   m_TagString: Untagged
@@ -69,28 +68,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Artifact
   item: 1
---- !u!95 &6065841061628963916
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8769361199505454842}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
+  itemIcon: {fileID: 7470206607784375758, guid: 10cec659bf1b11140a0fb434813b7936, type: 3}
+  itemText: {fileID: 2893501701076717947, guid: d3e9a66b16e04a24abb2b340e64de738, type: 3}
 --- !u!1001 &643255457866404150
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -14,9 +14,11 @@ public class Option : MonoBehaviour
     //現在選択されているタブのインデックス
     int idx;
 
-    private OptionDataSet optionDataSet;
+    [SerializeField] private OptionDataSet optionDataSet;
 
     private List<OptionTemp> option = new List<OptionTemp>();
+
+    private Player_FP player;
 
     /// <summary>
     /// タブの色を変えて、対応するオプションデータボックスを表示する
@@ -116,6 +118,14 @@ public class Option : MonoBehaviour
                 setOp.cameraOption.SpeedX = Mathf.Max(setOp.cameraOption.SpeedX, op[i].cameraOption.SpeedX);
                 setOp.cameraOption.MoveY = setOp.cameraOption.MoveY || op[i].cameraOption.MoveY;
                 setOp.cameraOption.MoveX = setOp.cameraOption.MoveX || op[i].cameraOption.MoveX;
+
+                if (player == null)
+                {
+                    var obj = GameObject.Find("Player_FirstPerson");
+                    if (obj != null)
+                        player = obj.GetComponent<Player_FP>();
+                }
+                if (player != null) player.SetOptionData(setOp.cameraOption);
             }
             optionDataSet.SetAllOption(setOp);
         }
@@ -130,4 +140,6 @@ public class Option : MonoBehaviour
         optionDataSet.ReData();
         OnEnable();
     }
+
+
 }

@@ -54,4 +54,9 @@ public class OptionDataSet : MonoBehaviour
     {
         allOption = earlyOptionDataFile.GetAllOption();
     }
+
+    public CameraOption GetData()
+    {
+        return allOption.cameraOption;
+    }
 }

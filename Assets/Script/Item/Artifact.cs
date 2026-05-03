@@ -24,6 +24,8 @@ public class Artifact : ItemTemp
         canvas.worldCamera = GameObject.Find("UI/UICamera").GetComponent<Camera>();
         canvas.planeDistance = 5;
         anime.SetBool("Open", true);
+        if (itemIcon == null) itemIcon = Resources.Load<GameObject>("Prefabs/Item/Icon/ArtifactIcon");
+        if (itemText == null) itemText = Resources.Load<GameObject>("Prefabs/Item/Detail/ArtifactDetail");
     }
 
     public void GetPlayerScript(Player_FP player)
@@ -34,7 +36,10 @@ public class Artifact : ItemTemp
     public void ChoiceManual(bool choice)
     {
         if (choice)
+        {
             Destroy(GameObject.Find("ArtifactBox"));
+            pl.SetItems(itemIcon, itemText);
+        }
         
         pl.GetArtifact(choice);
         Destroy(gameObject);

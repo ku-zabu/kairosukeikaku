@@ -1,3 +1,5 @@
+using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -14,14 +16,16 @@ public class Player_FP : MonoBehaviour
     float lookSpeedX = 7, lookSpeedY = 7;     //カメラの回転速度
     bool lookMoveX = false, lookMoveY = false;  //リバース機能
 
-    bool artifactActive;
-    bool checkMenu;
-    bool miniGame;
+    [SerializeField] bool artifactActive;
+    bool inPossibleMove;
+    bool openMenu;
 
     GameObject attentionObj;
     ItemTemp item;
 
     Player_FP myScript;
+
+    [SerializeField] Camera subCamera;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,12 +38,22 @@ public class Player_FP : MonoBehaviour
         camera = Camera.main;
         camTra = camera.transform;
 
-        Cursor.lockState = CursorLockMode.Locked;
+        openMenu = false;
 
-        artifactActive = false;
-        miniGame = true;
+        if(subCamera ==null) subCamera = transform.Find("Main Camera").GetChild(0).GetComponent<Camera>();
+        var texture = subCamera.targetTexture;
+        texture.width = Screen.width; 
+        texture.height = Screen.height;
+        subCamera.enabled = false;
 
-        checkMenu= false; ;
+        GameObject dataBox;
+        if ((dataBox = GameObject.Find("OptionDataBox")) != null) 
+        {
+            var data = dataBox.GetComponent<OptionDataSet>().GetData();
+            SetOptionData(data);
+        }
+
+        GetArtifact(artifactActive);
     }
 
     /// <summary>
@@ -48,7 +62,8 @@ public class Player_FP : MonoBehaviour
     /// <param name="value"></param>
     void OnLook(InputValue value)
     {
-        if (checkMenu) return;
+        if (camTra == null) return;
+        if (inPossibleMove) return;
         Vector2 input = value.Get<Vector2>();
         var xRot = input.y * lookSpeedX * Time.deltaTime * (lookMoveX ? 1 : -1);
         var yRot = input.x * lookSpeedY * Time.deltaTime * (lookMoveY ? -1 : 1);
@@ -72,7 +87,7 @@ public class Player_FP : MonoBehaviour
     /// </summary>
     void Move()
     {
-        if(checkMenu) return;
+        if(inPossibleMove) return;
         var input = playerInput.actions["Move"].ReadValue<Vector2>();
         if(input == Vector2.zero) return;
         Vector3 moveForward = (transform.forward * input.y + transform.right * input.x);
@@ -112,7 +127,7 @@ public class Player_FP : MonoBehaviour
     void OnPast(InputValue inputValue)
     {
         if (!artifactActive) return;
-        Debug.Log("過去に移動");
+        StartCoroutine(BootArtifact(false));
     }
     /// <summary>
     /// 未来に飛ぶボタン
@@ -121,39 +136,73 @@ public class Player_FP : MonoBehaviour
     void OnFuture(InputValue inputValue)
     {
         if (!artifactActive) return;
-        Debug.Log("未来に移動");
+        StartCoroutine(BootArtifact(true));
     }
+
+    /// <summary>
+    /// アーティファクトを起動
+    /// </summary>
+    IEnumerator BootArtifact(bool pf)
+    {
+        if (inPossibleMove) yield break;
+
+        artifactActive = false;
+
+        inPossibleMove = true;
+        openMenu = false;
+        yield return StartCoroutine(SetTexture());           //テクスチャーの風景を更新
+        //------------------------オブジェクト表示切り替え処理--------------------
+        yield return StartCoroutine(canvas.BootArtifact(pf));//移行時間
+        inPossibleMove = false;
+        openMenu = true;
+
+        yield return StartCoroutine (canvas.InUseArtifact());//滞在時間
+
+        if(inPossibleMove) OnJump(null);
+        inPossibleMove = true;
+        openMenu = false;
+        yield return StartCoroutine(SetTexture());           //テクスチャーの風景を更新
+        //------------------------オブジェクト表示切り替え処理--------------------
+        yield return StartCoroutine(canvas.EndArtifact(pf)); //移行時間
+        inPossibleMove = false;
+        openMenu = true;
+        yield return StartCoroutine(canvas.CoolArtifact());  //クールタイム
+        artifactActive = true;
+    }
+
+    IEnumerator SetTexture()
+    {
+        subCamera.enabled = true;
+        yield return null;
+        subCamera.enabled = true;
+    }
+
     /// <summary>
     /// メニューを開くボタン
     /// </summary>
     /// <param name="inputValue"></param>
     void OnJump(InputValue inputValue)
     {
-        if (miniGame)
-        {
+        if (!openMenu) return;
             canvas.OpenMenu();
-            checkMenu = !checkMenu;
-            Cursor.lockState = checkMenu ? CursorLockMode.Confined : CursorLockMode.Locked;
-            Cursor.visible = checkMenu;
-        }
-        else
-        {
-
-        }
+            inPossibleMove = !inPossibleMove;
+            Cursor.lockState = inPossibleMove ? CursorLockMode.Confined : CursorLockMode.Locked;
+            Cursor.visible = inPossibleMove;
     }
     /// <summary>
     /// マウスクリックでインタラクトするボタン
     /// </summary>
     void OnInteract()
     {
-        if (item == null) return;
+        if (item == null || inPossibleMove) return;
         item.Interact(myScript);
         item = null;
     }
 
     public void StopCameraAndMove()
     {
-        checkMenu = true;
+        openMenu = false;
+        inPossibleMove = true;
         Cursor.lockState = CursorLockMode.Confined;
         Cursor.visible = true;
     }
@@ -163,9 +212,23 @@ public class Player_FP : MonoBehaviour
         if (c)
         {
             canvas.GetArtifact();
-            artifactActive = true;        
+            artifactActive = true;
         }
+        openMenu = true;
         Cursor.lockState = CursorLockMode.Locked;
-        checkMenu = false;
+        inPossibleMove = false;
+    }
+
+    public void SetItems(GameObject icon, GameObject text)
+    {
+        canvas.SetItems(icon, text);
+    }
+
+    public void SetOptionData(CameraOption data)
+    {
+        lookSpeedX = data.SpeedX;
+        lookSpeedY = data.SpeedY;
+        lookMoveX = data.MoveX;
+        lookMoveY = data.MoveY;
     }
 }
