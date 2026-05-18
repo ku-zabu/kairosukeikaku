@@ -1,45 +1,56 @@
-using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 
-[RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(PlayerInput))]
-
-public class Playerontroller : MonoBehaviour
+public class PlayerController : MonoBehaviour
 {
-    private Rigidbody rb;
-    private PlayerInput input;
+    Rigidbody rb;
+    float force = 5.0f;    // オブジェクトを動かす際の力
+    float speed_X;  // オブジェクトのX軸における速度
+    float speed_Z;  // オブジェクトのZ軸における速度
+    float maxSpeed = 4.0f;  // オブジェクトの最大速度
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
+    Vector3 prePos; // 前フレームでのオブジェクトの座標位置
+    Quaternion target;  // オブジェクトの回転量
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.freezeRotation = true;
-        input = GetComponent<PlayerInput>();
+        prePos = transform.position;    // スタート地点の座標を代入
     }
 
-    // Update is called once per frame
     void Update()
     {
-        var value = input.actions["Move"].ReadValue<Vector2>();
-        if (value != Vector2.zero)
-        {
-            Vector3 cameraForeard = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-            Vector3 moveForward = cameraForeard * value.y + Camera.main.transform.right * value.x;
-            rb.linearVelocity = new float3(moveForward) * (input.actions["Sprint"].inProgress ? 4 : 2);
+        // 現在の速度を取得
+        speed_X = Mathf.Abs(rb.linearVelocity.x);   // X軸における線速度
+        speed_Z = Mathf.Abs(rb.linearVelocity.z);   // Z軸における線速度
 
-            rb.rotation = Quaternion.RotateTowards(
-                rb.rotation,
-                Quaternion.LookRotation(moveForward),
-                360 * Time.deltaTime);
+        // キー操作による移動処理
+        if (speed_X < maxSpeed && speed_Z < maxSpeed)   // 速度制限
+        {
+            if (Input.GetKey(KeyCode.W))
+            {
+                rb.AddForce(0, 0, force);
+            }
+            if (Input.GetKey(KeyCode.S))
+            {
+                rb.AddForce(0, 0, -force);
+            }
+            if (Input.GetKey(KeyCode.D))
+            {
+                rb.AddForce(force, 0, 0);
+            }
+            if (Input.GetKey(KeyCode.A))
+            {
+                rb.AddForce(-force, 0, 0);
+            }
         }
 
-        if (input.actions["Q"].WasPressedThisFrame())
-
+        // オブジェクトの回転処理
+        Vector3 direction = transform.position - prePos;    // フレーム間での座標の差分
+        if (direction != Vector3.zero)
         {
-            Debug.Log("Qが押された");
+            target = Quaternion.LookRotation(direction);    // オブジェクトを回転させたい量
+            transform.rotation = Quaternion.RotateTowards(transform.rotation, target, 600f * Time.deltaTime);   // 回転を加える処理
         }
-
+        prePos = transform.position;    // 現在の座標位置を代入しておく
     }
 }
