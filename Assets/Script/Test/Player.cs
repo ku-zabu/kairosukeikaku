@@ -1,3 +1,4 @@
+using Unity.Cinemachine;
 using Unity.Mathematics;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -10,6 +11,7 @@ public class PlayerMove : MonoBehaviour
 {
     private Rigidbody rb;
     private PlayerInput input;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -26,19 +28,20 @@ public class PlayerMove : MonoBehaviour
         if (value != Vector2.zero)
         {
 
-            rb.linearVelocity = new float3(value.x,0f,value.y) * (input.actions["Sprint"].inProgress ? 4 : 2);
+            rb.linearVelocity = new float3(value.x, 0f, value.y) * (input.actions["Sprint"].inProgress ? 4 : 2);
 
             rb.rotation = Quaternion.RotateTowards(
                 rb.rotation,
                 Quaternion.LookRotation(new float3(value.x, 0f, value.y)),
                 360 * Time.deltaTime);
         }
-
-        if (input.actions["Q"].WasPressedThisFrame())
-        
+    }
+    void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("artifact"));
         {
-            Debug.Log("QÇ™âüÇ≥ÇÍÇΩ");
+            Debug.Log("Ç†Å[ÇƒÇ°Ç”ÇüÇ≠Ç∆");
         }
-        
+
     }
 }
