@@ -25,13 +25,12 @@ public class PlayerMove : MonoBehaviour
         var value = input.actions["Move"].ReadValue<Vector2>();
         if (value != Vector2.zero)
         {
-            Vector3 cameraForeard = Vector3.Scale(Camera.main.transform.forward, new Vector3(1, 0, 1)).normalized;
-            Vector3 moveForward = cameraForeard * value.y + Camera.main.transform.right * value.x;
-            rb.linearVelocity = new float3(moveForward) * (input.actions["Sprint"].inProgress ? 4 : 2);
+
+            rb.linearVelocity = new float3(value.x,0f,value.y) * (input.actions["Sprint"].inProgress ? 4 : 2);
 
             rb.rotation = Quaternion.RotateTowards(
                 rb.rotation,
-                Quaternion.LookRotation(moveForward),
+                Quaternion.LookRotation(new float3(value.x, 0f, value.y)),
                 360 * Time.deltaTime);
         }
 
