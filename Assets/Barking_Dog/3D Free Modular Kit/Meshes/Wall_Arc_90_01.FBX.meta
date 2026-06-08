@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 7387acdd6d3eb4b1d80e5da2645047c4
+guid: 13aac7515de6a4dd4b3c7979f7dbe7a2
 ModelImporter:
   serializedVersion: 23
   fileIDToRecycleName:
@@ -7,14 +7,19 @@ ModelImporter:
     400000: //RootNode
     2300000: //RootNode
     3300000: //RootNode
-    4300000: Roof_Door_01
+    4300000: Wall_Arc_90_01
     9500000: //RootNode
   externalObjects:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Orange
+      name: Diffuse_01
     second: {fileID: 2100000, guid: 34e48a3ce50b34c339d8fc61e309e31d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Neon_01
+    second: {fileID: 2100000, guid: 91a1b05a08a334950a599b252610e8cf, type: 2}
   materials:
     importMaterials: 1
     materialName: 0
@@ -100,10 +105,3 @@ ModelImporter:
   userData: 
   assetBundleName: 
   assetBundleVariant: 
-AssetOrigin:
-  serializedVersion: 1
-  productId: 85732
-  packageName: 3D Free Modular Kit
-  packageVersion: 2.5
-  assetPath: Assets/Barking_Dog/3D Free Modular Kit/Meshes/Roof_Door_01.FBX
-  uploadId: 896232
