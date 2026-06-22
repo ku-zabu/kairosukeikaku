@@ -24,8 +24,8 @@ public class PlayerMove : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        var value = input.actions["Move"].ReadValue<Vector3>();
-        if (value != Vector3.zero)
+        var value = input.actions["Move"].ReadValue<Vector2>();
+        if (value != Vector2.zero)
         {
 
             rb.linearVelocity = new float3(value.x, 0f, value.y) * (input.actions["Sprint"].inProgress ? 4 : 2);
