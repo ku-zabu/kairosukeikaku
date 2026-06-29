@@ -8,6 +8,9 @@ TagManager:
   - DeadZone
   - CheckPoint
   - artifact
+  - Item
+  - Gimmick
+  - Exit
   layers:
   - Default
   - TransparentFX

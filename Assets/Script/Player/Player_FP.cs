@@ -195,7 +195,6 @@ public class Player_FP : MonoBehaviour
     void OnInteract()
     {
         if (item == null || inPossibleMove) return;
-        item.Interact(myScript);
         item = null;
     }
 

@@ -2,12 +2,17 @@ using UnityEngine;
 
 public class ItemTemp : MonoBehaviour
 {
-    [SerializeField] bool item;
-    public GameObject itemIcon;
-    public GameObject itemText;
+    public int itemNo;
+    public string inversText;
+    public string acquireText;
 
-    public virtual void Interact(Player_FP player = null)
+    public virtual void Investigate()
     {
-        if (item) Destroy(gameObject);
+
+    }
+
+    public void Acquire()
+    {
+
     }
 }
