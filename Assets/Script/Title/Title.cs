@@ -1,65 +1,157 @@
+using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 /// <summary>
 /// タイトルシーンの管理
 /// </summary>
 public class Title : MonoBehaviour
 {
-    //Optionのデータを補完するオブジェクトのプレハブ
-    [SerializeField] private GameObject OptionDataBox;
-    //設定のオブジェクト
-    private GameObject option;
-    //ゲームシーン
-    [SerializeField] private SceneAsset gameScene;
-    
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    [SerializeField, Header("OptionObject")] GameObject option;
+    [SerializeField, Header("読み込みたいシーン")] private SceneAsset gameScene;
+    [SerializeField, Header("PlayerInput")] PlayerInput input;
+    [SerializeField, Header("Animator")] Animator anima;
+    int command = 3;
+    GameManager gameManager;
+    [SerializeField, Header("BGMの音量")] Slider bgmVolume;
+    [SerializeField, Header("SEの音量")] Slider seVolume;
+
+    [SerializeField, Header("BGMの音量数")] Text bgmText;
+    [SerializeField, Header("SEの音量数")] Text seText;
+
+    private void Start()
     {
-        //OptionDataBoxの生成状況確認とoptionオブジェクトの取得
-        try
+        AnimeD();
+        option.SetActive(false);
+        gameManager = FindAnyObjectByType<GameManager>();
+    }
+
+    public void AnimeD()
+    {
+        input.SwitchCurrentActionMap("Option");
+        input.currentActionMap.Disable();
+        input.SwitchCurrentActionMap("Title");
+        input.currentActionMap.Disable();
+    }
+    public void AnimeE()
+    {
+        input.ActivateInput();
+        switch (command)
         {
-            //アタッチ忘れ対策
-            if (OptionDataBox == null)
-                OptionDataBox = Resources.Load<GameObject>("Prefabs/Option/OptionDataBox");
-            //OptionDataBoxがシーン上に存在しない場合は生成
-            if (GameObject.Find(OptionDataBox.name) == null)
-            {
-                var ins = Instantiate(OptionDataBox);
-                ins.name = OptionDataBox.name;//名前を統一
-            }
-            //optionオブジェクトの取得
-            option = transform.GetChild(1).gameObject;
-            option.SetActive(false);//最初は非表示
+            case 0: //ゲームスタート
+                return;
+            case 1: //オプションを開く
+                input.SwitchCurrentActionMap("Title");
+                input.currentActionMap.Disable();
+                input.SwitchCurrentActionMap("Option");
+                input.currentActionMap.Enable();
+                break;
+            case 2: //ゲームをやめる
+                return;
+            case 3: //オプションを閉じる
+                input.SwitchCurrentActionMap("Option");
+                input.currentActionMap.Disable();
+                input.SwitchCurrentActionMap("Title");
+                input.currentActionMap.Enable();
+                break;
+            default:
+                Debug.LogError("未割当");
+                break;
+
         }
-        catch (System.NullReferenceException) //null参照例外をキャッチ
+    }
+
+    public void AnimeC()
+    {
+        switch (command)
         {
-            Debug.LogError("OptionDataBoxが見つかりません。プレハブの設定を確認してください。");
-        }
-    }
+            case 0: //ゲームスタート
+                Debug.Log("Start");
+                //SceneManager.LoadScene(gameScene.name);
+                return;
 
-    //GameStart
-    public void StartGameButton()
-    {
-        SceneManager.LoadScene(gameScene.name);
-    }
+            case 1: //オプションを開く
+                option.SetActive(true);
+                var values = gameManager.GetValues();
+                Debug.Log(values);
+                bgmVolume.value = values.x * 1000;
+                seVolume.value = values.y * 1000;
+                bgmText.text = $"{bgmVolume.value * 0.1f:F1}%";
+                seText.text = $"{seVolume.value * 0.1f:F1}%";
+                break;
 
-    //OptionOpen
-    public void OptionButton()
-    {
-        option.SetActive(true);
-    }
-
-    /// <summary>
-    /// ゲームを終了する関数
-    /// </summary>
-    public void QuitGameButton()
-    {
+            case 2: //ゲームをやめる
 #if UNITY_EDITOR
-        UnityEditor.EditorApplication.isPlaying = false;//ゲーム開発中
+                UnityEditor.EditorApplication.isPlaying = false;//ゲーム開発中
 #else
         Application.Quit();//ゲーム開発後
 #endif
+                return;
+
+            case 3: //オプションを閉じる
+                option.SetActive(false);
+                break;
+
+            default:
+                Debug.LogError("未割当");
+                break;
+        }
+        anima.Play("Title_0");
     }
+
+    //----------Title----------
+    /// <summary> GameStart </summary>
+    public void OnStart() { Operation(0); }
+    /// <summary> OpenOption </summary>
+    public void OnOption() { Operation(1); }
+    /// <summary> QuitGame </summary>
+    public void OnQuit() { Operation(2); }
+
+    //----------Option----------
+    /// <summary> 変更を適用 </summary>
+    public void OnApply()
+    {
+        gameManager.SetValues(true, bgmVolume.value, seVolume.value);
+        Operation(3);
+    }
+    /// <summary> 変更を破棄 </summary>
+    public void OnCancel()
+    {
+        gameManager.SetValues(false);
+        Operation(3);
+    }
+
+    /// <summary> 切り替え </summary>
+    /// <param name="id"></param>
+    void Operation(int id)
+    {
+        command = id;
+        anima.Play("Title_1");
+    }
+
+    private void FixedUpdate()
+    {
+        if(input.currentActionMap.name == "Option")
+        {
+            var volume = new float2(input.actions["BGM"].ReadValue<float>(), input.actions["SE"].ReadValue<float>());
+            bgmVolume.value += volume.x;
+            seVolume.value += volume.y;
+
+            bgmText.text = $"{bgmVolume.value * 0.1f:F1}%";
+            seText.text = $"{seVolume.value * 0.1f:F1}%";
+
+            gameManager.Confirmation(bgmVolume.value, seVolume.value, volume.y != 0);
+        }
+    }
+
+    public void SeUp()
+    {
+        gameManager.Confirmation(bgmVolume.value, seVolume.value, true);
+    }
+
+
 }
