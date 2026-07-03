@@ -926,7 +926,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a142842f11b7d84d86e0faaaffe9ec1, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -1.5066758
+      value: -12.16
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 8a142842f11b7d84d86e0faaaffe9ec1, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2734,7 +2734,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bfaf28ed225faa040b898738cab82012, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameMane_Beye
-  awaitTime: 2
 --- !u!4 &772477877
 Transform:
   m_ObjectHideFlags: 0
@@ -4435,7 +4434,7 @@ GameObject:
   - component: {fileID: 1307037487}
   - component: {fileID: 1307037486}
   - component: {fileID: 1307037485}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Ground
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5050,6 +5049,7 @@ GameObject:
   - component: {fileID: 1411361027}
   - component: {fileID: 1411361025}
   - component: {fileID: 1411361024}
+  - component: {fileID: 1411361029}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -5119,8 +5119,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13eb42d3440ac2e4ca7a8619d14f4f35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Player_Beye
-  moveSpeed: 3
-  moveType: 0
+  groundLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  walkSpeed: 4
+  isGrounded: 0
+  groundPositionOffset: {x: 0, y: 0.02, z: 0}
+  groundColliderRadius: 0.29
 --- !u!4 &1411361028
 Transform:
   m_ObjectHideFlags: 0
@@ -5130,13 +5135,35 @@ Transform:
   m_GameObject: {fileID: 1411361023}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 5.93, y: 12.87, z: -2.08}
+  m_LocalPosition: {x: 6.61, y: 12.87, z: -0.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1577621518}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!95 &1411361029
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1411361023}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 0}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1001 &1420678941
 PrefabInstance:
   m_ObjectHideFlags: 0
