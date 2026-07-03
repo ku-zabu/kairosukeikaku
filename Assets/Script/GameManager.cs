@@ -13,6 +13,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         bgmSource.volume = values.x;
         seSource.volume = values.y;
+        GameManager[] managers = FindObjectsByType<GameManager>(FindObjectsSortMode.None);
+        if(managers.Length > 1)
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public float2 GetValues()
@@ -43,4 +48,6 @@ public class GameManager : MonoBehaviour
             seSource.volume = values.y;
         }
     }
+
+
 }

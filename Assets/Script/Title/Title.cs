@@ -70,8 +70,8 @@ public class Title : MonoBehaviour
         switch (command)
         {
             case 0: //ゲームスタート
-                Debug.Log("Start");
-                //SceneManager.LoadScene(gameScene.name);
+                
+                SceneManager.LoadScene(gameScene.name);
                 return;
 
             case 1: //オプションを開く

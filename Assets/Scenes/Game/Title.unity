@@ -1499,7 +1499,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Title
   option: {fileID: 1828164474}
-  gameScene: {fileID: 0}
+  gameScene: {fileID: 102900000, guid: 83864977846998843a8fe044d0b2dd7a, type: 3}
   input: {fileID: 788672707}
   anima: {fileID: 788672706}
   bgmVolume: {fileID: 705422271}
@@ -1932,7 +1932,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 788.94, y: -184}
+  m_AnchoredPosition: {x: 788.93994, y: -184}
   m_SizeDelta: {x: 1577.88, y: 299.796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1232333485
@@ -2018,7 +2018,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0.5}
   m_AnchorMax: {x: 0, y: 0.5}
-  m_AnchoredPosition: {x: 788.94, y: 120}
+  m_AnchoredPosition: {x: 788.93994, y: 120}
   m_SizeDelta: {x: 1577.88, y: 299.796}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &1269418405
