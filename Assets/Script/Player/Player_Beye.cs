@@ -44,7 +44,6 @@ public class Player_Beye : MonoBehaviour
        var value = pi.actions["Move"].ReadValue<Vector2>();
 
         var V = new Vector3(value.x, 0f, value.y) * walkSpeed;
-        Debug.Log(V);
 
         rigidBody.AddForce(V,ForceMode.Acceleration);
 
