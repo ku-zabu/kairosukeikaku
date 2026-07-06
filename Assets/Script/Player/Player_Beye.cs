@@ -4,64 +4,42 @@ using UnityEngine.InputSystem;
 
 public class Player_Beye : MonoBehaviour
 {
-
-    private Rigidbody rigidBody;
-
-    private Vector3 velocity;
-
-    private Vector3 input;
-
-    private Animator animator;
-
-    [SerializeField]
-    private LayerMask groundLayers;
-
-    [SerializeField]
-    private float walkSpeed = 4f;
-
-    [SerializeField]
-    private bool isGrounded;
-
-    [SerializeField]
-    private Vector3 groundPositionOffset = new Vector3(0f, 0.02f, 0f);
-
-    [SerializeField]
-    private float groundColliderRadius = 0.29f;
-
-    public PlayerInput pi;
+    Rigidbody rb;
+    PlayerInput input;
+    [SerializeField] float moveSpeed;
+    [SerializeField] float roteSpeed;
 
     void Start()
     {
-        animator = GetComponentInChildren<Animator>();
-        rigidBody = GetComponent<Rigidbody>();
-        pi = GetComponent<PlayerInput>();
-
+        rb = GetComponent<Rigidbody>();
+        input = FindAnyObjectByType<PlayerInput>();
     }
 
     void FixedUpdate()
     {
+        if (Physics.SphereCast(transform.position + new Vector3(0, 1.1f, 0), 1.0f, -Vector3.up, out var hit, 0.2f)) 
+        {
+            var value = input.actions["Move"].ReadValue<Vector2>();
+            var moveF = new Vector3(value.x, 0, value.y) * moveSpeed;
+            rb.AddForce(moveF, ForceMode.Acceleration);
 
-       var value = pi.actions["Move"].ReadValue<Vector2>();
-
-        var V = new Vector3(value.x, 0f, value.y) * walkSpeed;
-
-        rigidBody.AddForce(V,ForceMode.Acceleration);
-
+            if(value != Vector2.zero)
+            {
+                rb.rotation = Quaternion.RotateTowards(
+                    rb.rotation,
+                    Quaternion.LookRotation(moveF.normalized),
+                    360 * roteSpeed * Time.deltaTime);
+            }
+        }
+        else //空中にいる
+        {
+            rb.AddForce(-Vector3.up * 3f, ForceMode.Impulse);
+        }
     }
 
     void Update()
     {
-        float move = Input.GetAxisRaw("Horizontal");
 
-        if (move != 0)
-        {
-            rigidBody.AddForce(new Vector2(move * walkSpeed, 0));
-        }
-        else
-        {
-            // ���͂��Ȃ����́A�ړ������̑��x�������I��0�ɂ���
-            rigidBody.linearVelocity = new Vector2(0, rigidBody.linearVelocity.y);
-        }
     }
 
 

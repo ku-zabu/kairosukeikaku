@@ -4,18 +4,12 @@
 TagManager:
   serializedVersion: 3
   tags:
-  - Enemy
-  - DeadZone
-  - CheckPoint
-  - artifact
-  - Item
-  - Gimmick
-  - Exit
+  - Ground
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - Ground
+  - Player
   - Water
   - UI
   - 
