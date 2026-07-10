@@ -9,10 +9,13 @@ public class Player_Beye : MonoBehaviour
     [SerializeField] float moveSpeed;
     [SerializeField] float roteSpeed;
 
+    StageManager stagemanager;
+
     void Start()
     {
         rb = GetComponent<Rigidbody>();
         input = FindAnyObjectByType<PlayerInput>();
+        stagemanager = FindAnyObjectByType<StageManager>();
     }
 
     void FixedUpdate()
@@ -37,10 +40,17 @@ public class Player_Beye : MonoBehaviour
         }
     }
 
-    void Update()
+    private void OnTriggerEnter(Collider other)
     {
-
+        if(other.TryGetComponent<ItemTemp>(out ItemTemp item))
+        {
+            stagemanager.SetItem(item);
+        }
     }
 
-
+    private void OnTriggerExit(Collider other)
+    {
+        stagemanager.unsetItem();
+    }
 }
+

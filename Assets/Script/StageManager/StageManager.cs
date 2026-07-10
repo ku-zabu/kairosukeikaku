@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
-using NUnit.Framework;
 using System;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -14,11 +14,18 @@ public class StageManager : MonoBehaviour
     List<Button> buttons = new List<Button>();
     Text menuText;
 
+    GameObject logParent;
+    Text logText;
+
     int nowTime = 1;
+
+    ItemTemp item;
+    List<int> itemList = new List<int>();
+    List<ItemBox> itemBoxs = new List<ItemBox>();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
-    {
+    { 
         var parent = transform.Find("Canvas/ButtonList");
         for(int i = 0; i < parent.childCount; i++)
         {
@@ -41,6 +48,14 @@ public class StageManager : MonoBehaviour
         Input_able("Item", false);
         Input_able("End", false);
         Input_able("Player", true);
+
+        logParent = transform.Find("Canvas/TextImage").gameObject;
+        logText = logParent.transform.Find("LogText").GetComponent<Text>();
+        logParent.SetActive(false);
+
+        itemBoxs.AddRange(FindObjectsByType<ItemBox>(FindObjectsSortMode.None));
+        foreach (var box in itemBoxs)
+            box.ActiveChanger(nowTime);
 
         //ここで別のスクリプトの関数を呼び、nowTimeを渡す
     }
@@ -74,19 +89,24 @@ public class StageManager : MonoBehaviour
         nowTime = 2;
         ChangeTime().Forget();
     }
+    /// <summary> 切り替え後 waitTime ミリ秒待つ </summary>
+    /// <returns></returns>
     async UniTask ChangeTime()
     {
         if (!menu) Input_able("Player", false);
         else       Input_able("UI", false);
 
-        for(int i=0; i < 3; i++)
+        for (int i = 0; i < 4; i++) 
         {
             buttons[i].interactable = false;
         }
 
+        foreach (var box in itemBoxs)
+            box.ActiveChanger(nowTime);
+
         await UniTask.Delay(waitTime);
 
-        for (int i = 0; i < 3; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (i == nowTime) continue;
             buttons[i].interactable = true;
@@ -115,20 +135,79 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    /// <summary> アイテムを参照 </summary>
+    /// <param name="getItem"></param>
+    public void SetItem(ItemTemp getItem)
+    {
+        if (getItem == null) return;
+        if (getItem.inversText != "")       
+            buttons[4].interactable = true;
+        else
+            buttons[4].interactable = false;
+
+        if (getItem.acquirText != "")
+            buttons[5].interactable = true;
+        else
+            buttons[5].interactable = false;
+
+        if (getItem.actionText != "")
+            buttons[6].interactable = true;
+        else
+            buttons[6].interactable = false;
+
+        item = getItem;
+    }
+    /// <summary> アイテムを忘却 </summary>
+    public void unsetItem()
+    {
+        for(int i=4;i<buttons.Count;i++)
+        {
+            buttons[i].interactable = false;
+        }
+        item = null;
+    }
+
     /// アクション
     /// <summary> 調べる </summary>
     public void OnInvestigate()
     {
-
+        if (!buttons[4].interactable) return;
+        OpenText(item.inversText);
     }
     ///<summary> 取得 </summary>
     public void OnAcquire()
     {
-
+        if (!buttons[5].interactable) return;
+        OpenText(item.acquirText);
+        itemList.Add(item.Acquir());
+        unsetItem();
     }
     ///<summary> 行動 </summary>
     public void OnAction()
     {
+        if (!buttons[6].interactable) return;
+        OpenText(item.actionText);
 
+    }
+    /// <summary> 何かしらコメントを出す </summary>
+    void OpenText(string comment)
+    {
+        logParent.SetActive(true);
+        logText.text = comment;
+        Input_able("Player", false);
+        Input_able("Item", true);
+    }
+
+    public void OnCloseM()
+    {
+        logParent.SetActive(false);
+        Input_able("Item", false);
+        Input_able("Player", true);
+    }
+
+    public bool ItemCheck(int i)
+    {
+        if(itemList.Count == 0) return false;
+        return itemList.Contains(i);
     }
 }
