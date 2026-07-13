@@ -17,11 +17,14 @@ public class StageManager : MonoBehaviour
     GameObject logParent;
     Text logText;
 
-    int nowTime = 1;
+    public int nowTime = 1;
 
     ItemTemp item;
-    List<int> itemList = new List<int>();
+    /// <summary>現在所持しているアイテム</summary>
+    [SerializeField] List<int> itemList = new List<int>();
     List<ItemBox> itemBoxs = new List<ItemBox>();
+
+    bool goal = false;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -104,6 +107,10 @@ public class StageManager : MonoBehaviour
         foreach (var box in itemBoxs)
             box.ActiveChanger(nowTime);
 
+        Tree[] trees = FindObjectsByType<Tree>(FindObjectsSortMode.None);
+        foreach (var tree in trees)
+            tree.ChangeMode(nowTime);
+
         await UniTask.Delay(waitTime);
 
         for (int i = 0; i < 4; i++)
@@ -114,6 +121,8 @@ public class StageManager : MonoBehaviour
 
         if (!menu) Input_able("Player", true);
         else       Input_able("UI", true);
+
+        SetItem(item);
     }
 
     /// Menu切り替え
@@ -164,7 +173,6 @@ public class StageManager : MonoBehaviour
         {
             buttons[i].interactable = false;
         }
-        item = null;
     }
 
     /// アクション
@@ -181,21 +189,35 @@ public class StageManager : MonoBehaviour
         OpenText(item.acquirText);
         itemList.Add(item.Acquir());
         unsetItem();
+        itemList.Remove(0);
+        item.ChangerSet();
+        SetItem(item);
     }
     ///<summary> 行動 </summary>
     public void OnAction()
     {
         if (!buttons[6].interactable) return;
         OpenText(item.actionText);
-
+        if(item.itemNo != 0)
+            itemList.Remove(item.itemNo);
+        item.Action(nowTime);
+        SetItem(item);
     }
     /// <summary> 何かしらコメントを出す </summary>
     void OpenText(string comment)
     {
         logParent.SetActive(true);
         logText.text = comment;
-        Input_able("Player", false);
-        Input_able("Item", true);
+        if (!goal)
+        {
+            Input_able("Player", false);
+            Input_able("Item", true);
+        }
+        else
+        {
+            Input_able("Player", false);
+            Input_able("End", true);
+        }
     }
 
     public void OnCloseM()
@@ -209,5 +231,16 @@ public class StageManager : MonoBehaviour
     {
         if(itemList.Count == 0) return false;
         return itemList.Contains(i);
+    }
+
+    public void Goal()
+    {
+        goal = true;
+        OpenText("脱出成功！");
+    }
+    
+    public void OnEnd()
+    {
+
     }
 }

@@ -46,6 +46,10 @@ public class Player_Beye : MonoBehaviour
         {
             stagemanager.SetItem(item);
         }
+        if (other.gameObject.CompareTag("Exit"))
+        {
+            stagemanager.Goal();
+        }
     }
 
     private void OnTriggerExit(Collider other)

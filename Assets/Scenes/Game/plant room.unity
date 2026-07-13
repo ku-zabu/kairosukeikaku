@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -369,6 +369,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::StageManager
   waitTime: 500
+  nowTime: 1
+  itemList: 
 --- !u!114 &200978288
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -712,7 +714,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -1936,7 +1938,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2037,6 +2039,59 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 7135790475038435720, guid: d4c0d7159c5a44b4c9e0b1bb6c221fe1, type: 3}
   m_PrefabInstance: {fileID: 1167904721}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &988709265
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 988709267}
+  - component: {fileID: 988709266}
+  m_Layer: 0
+  m_Name: GoalBox
+  m_TagString: Exit
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &988709266
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988709265}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1.8688388, z: 2.4453037}
+  m_Center: {x: 0, y: 0.25025964, z: 0.015612721}
+--- !u!4 &988709267
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988709265}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 9, y: 8.5, z: 0.7}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &995906308
 GameObject:
   m_ObjectHideFlags: 0
@@ -2088,7 +2143,7 @@ Rigidbody:
   m_GameObject: {fileID: 995906308}
   serializedVersion: 5
   m_Mass: 10
-  m_LinearDamping: 8
+  m_LinearDamping: 5
   m_AngularDamping: 0.05
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
@@ -2129,7 +2184,7 @@ Transform:
   m_GameObject: {fileID: 995906308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: -5.45, y: 0, z: 4.29}
+  m_LocalPosition: {x: 6.14, y: 8.02, z: 0.83}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -2358,7 +2413,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -2895,7 +2950,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -3514,26 +3569,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0fe21df883e6f104dacf22d680c4c650, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Tree
-  itemNo: 0
+  itemNo: 1
   inversText: 
   acquirText: 
   actionText: 
-  mode: 1
-  inversTexts:
-  - "\u4F55\u304B\u690D\u3048\u308C\u305D\u3046\u3060"
-  - 
-  - "\u4F55\u3082\u6301\u3063\u3066\u3044\u306A\u3044"
-  acquirTexts:
-  - "\u4F55\u3068\u304B\u767B\u308C\u305D\u3046\u3060"
-  - 
-  - "\u4F55\u3068\u304B\u767B\u3063\u305F"
-  actionTexts:
-  - "\u3053\u308C\u306F\u767B\u308C\u306A\u3044"
-  - 
-  - 
-  water: 0000
-  needItemNo: 1
-  setItem: 0
+  mode: 000000000000000000000000
+  water: 000000
+  setItem: 000000
+  nowTime: 0
 --- !u!65 &1421831061
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -4359,7 +4402,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -4607,7 +4650,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Button
   m_Navigation:
-    m_Mode: 3
+    m_Mode: 0
     m_WrapAround: 0
     m_SelectOnUp: {fileID: 0}
     m_SelectOnDown: {fileID: 0}
@@ -5077,3 +5120,4 @@ SceneRoots:
   - {fileID: 200978286}
   - {fileID: 417164559}
   - {fileID: 1645174807}
+  - {fileID: 988709267}
