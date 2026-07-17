@@ -10,6 +10,7 @@ public class Tree : ItemTemp
     public bool[] water = new bool[3];
     public bool[] setItem = new bool[3];
     public int nowTime = 1;
+    [SerializeField] Transform pos;
 
     private void Awake()
     {
@@ -35,8 +36,8 @@ public class Tree : ItemTemp
             case 2:
                 if (setItem[0] && water[1])
                     mode[2] = mode[1] + 1;
-                else if(!setItem[0] && !water[0] && !setItem[1] && !water[1])
-                    mode[2] = 1;
+                else if((!setItem[0] && !water[0]) && (setItem[1] && water[1]))//Ç±Ç±ÇèCê≥
+                    mode[2] = 2;
                 else
                     mode[2] = mode[1];
 
@@ -48,6 +49,22 @@ public class Tree : ItemTemp
 
     public override void ChangerSet()
     {
+        switch (mode[nowTime])
+        {
+            case 1:
+                transform.GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(2).gameObject.SetActive(false);
+
+                break;
+            case 2:
+                transform.GetChild(1).gameObject.SetActive(true);
+                transform.GetChild(2).gameObject.SetActive(false);
+                break;
+            case 3:
+                transform.GetChild(1).gameObject.SetActive(false);
+                transform.GetChild(2).gameObject.SetActive(true);
+                break;
+        }
 
         inversText = mode[nowTime] switch
         {
@@ -93,11 +110,17 @@ public class Tree : ItemTemp
 
     public override void Action(int i)
     {
-        setItem[nowTime] = true;
-        nowTime = i;
+        switch (mode[nowTime])
+        {
+            case 1:
+                setItem[nowTime] = true;
+                break;
+
+            case 2:
+                var p = FindAnyObjectByType<Player_Beye>().transform;
+                p = pos;
+                break;
+        }
         ChangerSet();
     }
-
-
-
 }

@@ -26,6 +26,9 @@ public class StageManager : MonoBehaviour
 
     bool goal = false;
 
+    List<StageSkinn> stageSkins = new List<StageSkinn>();
+    List<ObjSkin> objSkins = new List<ObjSkin>();
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     { 
@@ -60,7 +63,13 @@ public class StageManager : MonoBehaviour
         foreach (var box in itemBoxs)
             box.ActiveChanger(nowTime);
 
-        //ここで別のスクリプトの関数を呼び、nowTimeを渡す
+        stageSkins.AddRange(FindObjectsByType<StageSkinn>(FindObjectsSortMode.None));
+        foreach(var stage in stageSkins)
+            stage.ChangeSkin(nowTime);
+
+        objSkins.AddRange(FindObjectsByType<ObjSkin>(FindObjectsSortMode.None));
+        foreach( var obj in objSkins)
+            obj.ChangeSkin(nowTime);
     }
 
     void Input_able(string name, bool a)
@@ -106,6 +115,12 @@ public class StageManager : MonoBehaviour
 
         foreach (var box in itemBoxs)
             box.ActiveChanger(nowTime);
+
+        foreach (var stage in stageSkins)
+            stage.ChangeSkin(nowTime);
+
+        foreach (var obj in objSkins)
+            obj.ChangeSkin(nowTime);
 
         Tree[] trees = FindObjectsByType<Tree>(FindObjectsSortMode.None);
         foreach (var tree in trees)
