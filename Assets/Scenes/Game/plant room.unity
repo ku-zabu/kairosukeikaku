@@ -5979,7 +5979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: acdc3c8045e42214d95f40bd6a439d1c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::TreeBox
-  active: 000000
+  active: 010101
 --- !u!1 &1650677417
 GameObject:
   m_ObjectHideFlags: 0
