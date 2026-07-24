@@ -10,7 +10,7 @@ public class Tree : ItemTemp
     public bool[] water = new bool[3];
     public bool[] setItem = new bool[3];
     public int nowTime = 1;
-    [SerializeField] Transform pos;
+    Transform pos;
 
     private void Awake()
     {

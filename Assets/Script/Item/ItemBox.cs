@@ -9,10 +9,13 @@ public class ItemBox : MonoBehaviour
         switch (i)
         {
             case 0:
+                gameObject.SetActive(active[0]);
                 break;
             case 1:
+                gameObject.SetActive(active[1]);
                 break;
             case 2:
+                gameObject.SetActive(active[2]);
                 break;
             default:
                 break;
