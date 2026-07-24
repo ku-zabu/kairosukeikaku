@@ -182,12 +182,14 @@ public class StageManager : MonoBehaviour
         item = getItem;
     }
     /// <summary> アイテムを忘却 </summary>
-    public void unsetItem()
+    public void unsetItem(bool n = false)
     {
         for(int i=4;i<buttons.Count;i++)
         {
             buttons[i].interactable = false;
         }
+        if (n)
+            item = null;
     }
 
     /// アクション

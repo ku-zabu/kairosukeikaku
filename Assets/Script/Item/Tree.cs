@@ -18,6 +18,7 @@ public class Tree : ItemTemp
         mode = new int[3];
         for (int i = 0; i < mode.Length; i++) mode[i] = 1;
         nowTime = 1;
+        pos = transform.Find("First/Terepo").transform;
     }
 
     public void ChangeMode(int i)

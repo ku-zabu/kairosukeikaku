@@ -391,6 +391,59 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2100000, guid: 73a5d6b079d48d64398f24fe4ac3c5dd, type: 2}
   - {fileID: 2100000, guid: 022baca406a24cf41b875748027a849b, type: 2}
+--- !u!1 &148303797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 148303798}
+  - component: {fileID: 148303799}
+  m_Layer: 0
+  m_Name: WorpPos
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &148303798
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148303797}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0.011110171, y: 0.062190942, z: 0.17551063, w: 0.98244846}
+  m_LocalPosition: {x: 0.786, y: 3.551, z: -1.843}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1627168661}
+  m_LocalEulerAnglesHint: {x: -2.502, y: 6.8, z: 20.109}
+--- !u!65 &148303799
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 148303797}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.17, y: 1, z: 3.09}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &150720342
 GameObject:
   m_ObjectHideFlags: 0
@@ -426,6 +479,76 @@ Transform:
   - {fileID: 626150024}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &164352391
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 164352392}
+  - component: {fileID: 164352394}
+  - component: {fileID: 164352393}
+  m_Layer: 0
+  m_Name: Terepo2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &164352392
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164352391}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 7.824, z: 1.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 540649528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &164352393
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164352391}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd29e58df6bed347a81c2c32f7225cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Terepo
+  itemNo: 0
+  inversText: "\u98DB\u3073\u79FB\u308C\u305D\u3046\u3060"
+  acquirText: 
+  actionText: "\u98DB\u3073\u79FB\u308C\u305F"
+--- !u!65 &164352394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 164352391}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.247707, y: 1.3749552, z: 0.6187129}
+  m_Center: {x: 0.21614671, y: -0.18747759, z: -2.0817754}
 --- !u!1 &189353234 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1911894202072253036, guid: 45086e41f9d789347a61d0e1bc2e1b83, type: 3}
@@ -675,6 +798,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 254221758}
+  - component: {fileID: 254221760}
+  - component: {fileID: 254221759}
   m_Layer: 0
   m_Name: Second
   m_TagString: Untagged
@@ -696,8 +821,52 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 814475259}
+  - {fileID: 462380034}
+  - {fileID: 1305457455}
   m_Father: {fileID: 1641258660}
   m_LocalEulerAnglesHint: {x: 0, y: 31.418, z: 0}
+--- !u!65 &254221759
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254221757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.288519, y: 0.6249633, z: 3.5384226}
+  m_Center: {x: -0.34004727, y: 6.5614424, z: -2.3391032}
+--- !u!65 &254221760
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 254221757}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8153536, y: 6.734308, z: 1.6303587}
+  m_Center: {x: -0.36707592, y: 2.867154, z: -2.165174}
 --- !u!1 &255226324
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,6 +1648,76 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 439593907}
   m_CullTransparentMesh: 1
+--- !u!1 &462380033
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 462380034}
+  - component: {fileID: 462380036}
+  - component: {fileID: 462380035}
+  m_Layer: 0
+  m_Name: Terepod
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &462380034
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462380033}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.26252607, z: 0, w: 0.96492493}
+  m_LocalPosition: {x: -0.438, y: 7.492, z: -2.248}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 254221758}
+  m_LocalEulerAnglesHint: {x: 0, y: -30.44, z: 0}
+--- !u!114 &462380035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462380033}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd29e58df6bed347a81c2c32f7225cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Terepo
+  itemNo: 0
+  inversText: "\u98DB\u3073\u767B\u308C\u305D\u3046\u3060"
+  acquirText: 
+  actionText: "\u98DB\u3073\u767B\u308C\u305F"
+--- !u!65 &462380036
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 462380033}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1.3009095}
+  m_Center: {x: -4.4499955, y: -2.33, z: -0.1504544}
 --- !u!1 &475742674
 GameObject:
   m_ObjectHideFlags: 0
@@ -1510,6 +1749,7 @@ Transform:
   m_Children:
   - {fileID: 892570407}
   - {fileID: 699397269}
+  - {fileID: 1604209750}
   m_Father: {fileID: 1421831059}
   m_LocalEulerAnglesHint: {x: 0, y: 41.164, z: 0}
 --- !u!1 &485525731 stripped
@@ -1542,6 +1782,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 540649528}
+  - component: {fileID: 540649530}
+  - component: {fileID: 540649529}
   m_Layer: 0
   m_Name: Second
   m_TagString: Untagged
@@ -1563,8 +1805,52 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1808911461}
+  - {fileID: 673940465}
+  - {fileID: 164352392}
   m_Father: {fileID: 1421831059}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &540649529
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540649527}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 3.1389003, y: 0.65448713, z: 3.3702602}
+  m_Center: {x: -0.41837668, y: 6.4720144, z: -2.3338752}
+--- !u!65 &540649530
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 540649527}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1.8235584, y: 6.500874, z: 2.108961}
+  m_Center: {x: -0.41177922, y: 2.750437, z: -2.295093}
 --- !u!1 &550582060 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1384481543341280282, guid: e961e6a244e72f94ba118fbbe075b1d3, type: 3}
@@ -1586,6 +1872,76 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2100000, guid: e755b0171aeeeb244b327f5c3e2eebcd, type: 2}
   - {fileID: 2100000, guid: e8561624e9dd589439aee3f399355597, type: 2}
+--- !u!1 &559532322
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 559532323}
+  - component: {fileID: 559532325}
+  - component: {fileID: 559532324}
+  m_Layer: 0
+  m_Name: Terepo 2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &559532323
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559532322}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0.89351743, z: -0, w: 0.44902867}
+  m_LocalPosition: {x: 4.237, y: 4.99, z: -2.796}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1627168661}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &559532324
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559532322}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd29e58df6bed347a81c2c32f7225cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Terepo
+  itemNo: 0
+  inversText: "\u767B\u308C\u305D\u3046\u3060"
+  acquirText: 
+  actionText: "\u767B\u3063\u305F"
+--- !u!65 &559532325
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 559532322}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 1.83, y: 0, z: 1.04}
 --- !u!1 &595954816
 GameObject:
   m_ObjectHideFlags: 0
@@ -2094,6 +2450,76 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 2100000, guid: e76e2b25c95f5da4e8f9afd922ac7387, type: 2}
+--- !u!1 &673940464
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 673940465}
+  - component: {fileID: 673940467}
+  - component: {fileID: 673940466}
+  m_Layer: 0
+  m_Name: Terepo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &673940465
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673940464}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -0.3, y: 7.245, z: -2.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 540649528}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &673940466
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673940464}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd29e58df6bed347a81c2c32f7225cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Terepo
+  itemNo: 0
+  inversText: "\u98DB\u3073\u79FB\u308C\u305D\u3046\u3060"
+  acquirText: 
+  actionText: "\u98DB\u3073\u79FB\u308C\u305F"
+--- !u!65 &673940467
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 673940464}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.68, y: 1, z: 3.12}
+  m_Center: {x: -3.3, y: 0, z: 0}
 --- !u!1 &699397268
 GameObject:
   m_ObjectHideFlags: 0
@@ -2510,6 +2936,48 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 6aa627ae9bfe13d4889ffe9bbb63fc30, type: 2}
   - {fileID: 2100000, guid: fc19906e3acd45741a11e73b79ae4932, type: 2}
   - {fileID: 2100000, guid: 707a0dc0b29fbc04cb2acd2f96d42b3d, type: 2}
+--- !u!65 &927951094
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927951091}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 2.5461159, y: 3.7881794, z: 2.1648355}
+  m_Center: {x: -1.331712, y: 9.07702, z: -1.3221877}
+--- !u!65 &927951095
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927951091}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 10.975421, y: 1.6435509, z: 2.186243}
+  m_Center: {x: 4.9877105, y: 6.811775, z: -1.3190409}
 --- !u!1 &942962531 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -1332396987746371587, guid: 9d4c642f34bf27b4b92168253009c68d, type: 3}
@@ -2828,7 +3296,7 @@ Transform:
   m_GameObject: {fileID: 995906308}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -1, z: 0, w: 0}
-  m_LocalPosition: {x: 3.8, y: 4.89, z: -3.99}
+  m_LocalPosition: {x: -4.66, y: 0.17, z: 2.661}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -3496,6 +3964,76 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d4c0d7159c5a44b4c9e0b1bb6c221fe1, type: 3}
+--- !u!1 &1199358530
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1199358531}
+  - component: {fileID: 1199358533}
+  - component: {fileID: 1199358532}
+  m_Layer: 0
+  m_Name: Terepo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1199358531
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199358530}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.082964845, z: -0, w: 0.9965525}
+  m_LocalPosition: {x: -0.028255314, y: 4.276, z: -1.9754218}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1627168661}
+  m_LocalEulerAnglesHint: {x: 0, y: 9.518, z: 0}
+--- !u!114 &1199358532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199358530}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd29e58df6bed347a81c2c32f7225cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Terepo
+  itemNo: 0
+  inversText: "\u98DB\u3073\u79FB\u308C\u305D\u3046\u3060"
+  acquirText: 
+  actionText: "\u98DB\u3073\u79FB\u3063\u305F"
+--- !u!65 &1199358533
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1199358530}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 3.06}
+  m_Center: {x: -4.1, y: 0, z: 0.69}
 --- !u!1 &1218021991
 GameObject:
   m_ObjectHideFlags: 0
@@ -3724,6 +4262,76 @@ MonoBehaviour:
   m_EffectColor: {r: 0, g: 0, b: 0, a: 0.5}
   m_EffectDistance: {x: 2, y: 2}
   m_UseGraphicAlpha: 1
+--- !u!1 &1305457454
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1305457455}
+  - component: {fileID: 1305457457}
+  - component: {fileID: 1305457456}
+  m_Layer: 0
+  m_Name: Terepo2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1305457455
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305457454}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.26252607, z: 0, w: 0.96492493}
+  m_LocalPosition: {x: 0.232, y: 7.492, z: -1.839}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 254221758}
+  m_LocalEulerAnglesHint: {x: 0, y: -30.44, z: 0}
+--- !u!114 &1305457456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305457454}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd29e58df6bed347a81c2c32f7225cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Terepo
+  itemNo: 0
+  inversText: "\u98DB\u3073\u767B\u308C\u305D\u3046\u3060"
+  acquirText: 
+  actionText: "\u98DB\u3073\u767B\u308C\u305F"
+--- !u!65 &1305457457
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1305457454}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.5999999, y: 1.3053762, z: 2.54}
+  m_Center: {x: 2.4600048, y: -0.46731192, z: 0.08999995}
 --- !u!1 &1327730426
 GameObject:
   m_ObjectHideFlags: 0
@@ -4870,6 +5478,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98b21e095c75271449b06df9d3e8e788, type: 3}
       insertIndex: -1
       addedObject: {fileID: 927951093}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98b21e095c75271449b06df9d3e8e788, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 927951095}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 98b21e095c75271449b06df9d3e8e788, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 927951094}
   m_SourcePrefab: {fileID: 100100000, guid: 98b21e095c75271449b06df9d3e8e788, type: 3}
 --- !u!1 &1593924465 stripped
 GameObject:
@@ -4892,6 +5506,76 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 2100000, guid: 73a5d6b079d48d64398f24fe4ac3c5dd, type: 2}
   - {fileID: 2100000, guid: 022baca406a24cf41b875748027a849b, type: 2}
+--- !u!1 &1604209749
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1604209750}
+  - component: {fileID: 1604209752}
+  - component: {fileID: 1604209751}
+  m_Layer: 0
+  m_Name: Terepo
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1604209750
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604209749}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: 0.9277506, z: -0, w: 0.373201}
+  m_LocalPosition: {x: 0.5525886, y: 4.276, z: -1.8967707}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 475742675}
+  m_LocalEulerAnglesHint: {x: 0, y: 9.536, z: 0}
+--- !u!114 &1604209751
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604209749}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6bd29e58df6bed347a81c2c32f7225cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Terepo
+  itemNo: 0
+  inversText: "\u98DB\u3073\u79FB\u308C\u305D\u3046\u3060"
+  acquirText: 
+  actionText: "\u98DB\u3073\u79FB\u3063\u305F"
+--- !u!65 &1604209752
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1604209749}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 2.39}
+  m_Center: {x: 4.78, y: 0, z: 0}
 --- !u!1 &1611795867 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: -3421597031332665612, guid: 9d4c642f34bf27b4b92168253009c68d, type: 3}
@@ -4943,6 +5627,9 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 855014156}
+  - {fileID: 148303798}
+  - {fileID: 1199358531}
+  - {fileID: 559532323}
   m_Father: {fileID: 1641258660}
   m_LocalEulerAnglesHint: {x: 0, y: 167.801, z: 0}
 --- !u!1 &1641258659
@@ -5001,7 +5688,7 @@ MonoBehaviour:
   water: 000000
   setItem: 000000
   nowTime: 0
-  pos: {fileID: 0}
+  pos: {fileID: 148303798}
 --- !u!65 &1641258662
 BoxCollider:
   m_ObjectHideFlags: 0

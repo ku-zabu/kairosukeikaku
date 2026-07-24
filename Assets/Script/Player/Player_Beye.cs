@@ -54,7 +54,7 @@ public class Player_Beye : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        stagemanager.unsetItem();
+        stagemanager.unsetItem(true);
     }
 }
 
