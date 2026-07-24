@@ -36,7 +36,7 @@ public class Tree : ItemTemp
             case 2:
                 if (setItem[0] && water[1])
                     mode[2] = mode[1] + 1;
-                else if((!setItem[0] && !water[0]) && (setItem[1] && water[1]))//Ç±Ç±ÇèCê≥
+                else if(!setItem[0] && !water[0] && setItem[1] && water[1])//Ç±Ç±ÇèCê≥
                     mode[2] = 2;
                 else
                     mode[2] = mode[1];
@@ -118,7 +118,7 @@ public class Tree : ItemTemp
 
             case 2:
                 var p = FindAnyObjectByType<Player_Beye>().transform;
-                p = pos;
+                p.position = pos.position;
                 break;
         }
         ChangerSet();
