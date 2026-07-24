@@ -2,7 +2,6 @@ using Unity.Mathematics;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Rendering;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -12,7 +11,7 @@ using UnityEngine.UI;
 public class Title : MonoBehaviour
 {
     [SerializeField, Header("OptionObject")] GameObject option;
-    [SerializeField, Header("読み込みたいシーン")] private SceneAsset gameScene;
+    [SerializeField, Header("読み込みたいシーン")] private string gameScene;
     [SerializeField, Header("PlayerInput")] PlayerInput input;
     [SerializeField, Header("Animator")] Animator anima;
     int command = 3;
@@ -71,7 +70,7 @@ public class Title : MonoBehaviour
         {
             case 0: //ゲームスタート
                 
-                SceneManager.LoadScene(gameScene.name);
+                SceneManager.LoadScene(gameScene);
                 return;
 
             case 1: //オプションを開く

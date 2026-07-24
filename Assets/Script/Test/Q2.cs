@@ -1,6 +1,6 @@
+/*
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class Q2 : MonoBehaviour
 {
@@ -23,4 +23,4 @@ public class Q2 : MonoBehaviour
         //SceneManager.LoadScene(gameScene.name);
         Debug.Log("1-1Çé¿çs");
     }
-}
+}*/

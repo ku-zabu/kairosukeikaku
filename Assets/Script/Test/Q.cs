@@ -1,8 +1,7 @@
-using System.Collections;
+/*
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class Q : MonoBehaviour
 {
@@ -26,5 +25,5 @@ public class Q : MonoBehaviour
     
 
 }
-
+*/
 

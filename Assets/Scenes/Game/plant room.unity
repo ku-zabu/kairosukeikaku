@@ -736,7 +736,7 @@ MonoBehaviour:
   waitTime: 500
   nowTime: 1
   itemList: 
-  exitScene: {fileID: 102900000, guid: 717fcd9993e37374b8ad60587d2e415d, type: 3}
+  exitScene: Title
 --- !u!114 &200978288
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -9,6 +9,9 @@ EditorBuildSettings:
     path: Assets/Scenes/Game/Title.unity
     guid: 717fcd9993e37374b8ad60587d2e415d
   - enabled: 1
+    path: Assets/Scenes/Game/plant room.unity
+    guid: 582b0099110bb4e4c82e182364230614
+  - enabled: 1
     path: Assets/Scenes/Game/Choice.unity
     guid: 83864977846998843a8fe044d0b2dd7a
   m_configObjects:

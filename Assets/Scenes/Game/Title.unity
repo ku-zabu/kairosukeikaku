@@ -1370,7 +1370,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Title
   option: {fileID: 1828164474}
-  gameScene: {fileID: 102900000, guid: 582b0099110bb4e4c82e182364230614, type: 3}
+  gameScene: plant room
   input: {fileID: 788672707}
   anima: {fileID: 788672706}
   bgmVolume: {fileID: 705422271}

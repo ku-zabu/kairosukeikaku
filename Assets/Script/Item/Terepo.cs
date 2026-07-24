@@ -1,5 +1,3 @@
-using UnityEngine;
-using static UnityEditor.PlayerSettings;
 
 public class Terepo : ItemTemp
 {

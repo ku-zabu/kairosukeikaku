@@ -1,5 +1,3 @@
-using System.Threading.Tasks;
-using Unity.Mathematics;
 using UnityEngine;
 
 //プレイヤーの死亡判定_チェックポイントへのワープ
