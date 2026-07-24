@@ -42,13 +42,17 @@ public class Player_Beye : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.TryGetComponent<ItemTemp>(out ItemTemp item))
-        {
-            stagemanager.SetItem(item);
-        }
         if (other.gameObject.CompareTag("Exit"))
         {
             stagemanager.Goal();
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.TryGetComponent<ItemTemp>(out ItemTemp item))
+        {
+            stagemanager.SetItem(item);
         }
     }
 

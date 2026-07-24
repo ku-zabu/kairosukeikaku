@@ -1,7 +1,7 @@
 using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
-using Unity.VisualScripting;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using UnityEngine.UI;
@@ -28,6 +28,8 @@ public class StageManager : MonoBehaviour
 
     List<StageSkinn> stageSkins = new List<StageSkinn>();
     List<ObjSkin> objSkins = new List<ObjSkin>();
+
+    [SerializeField] SceneAsset exitScene;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -144,6 +146,7 @@ public class StageManager : MonoBehaviour
     /// <summary> Menu‚ğŠJ•Â </summary>
     public void OnMenu()
     {
+        return;
         menu = !menu;
         string t = " V - ";
         menuText.text = t + (menu ? "•Â‚¶‚é" : "ƒƒjƒ…[");
@@ -258,6 +261,6 @@ public class StageManager : MonoBehaviour
     
     public void OnEnd()
     {
-
+        Debug.Log(exitScene.name);
     }
 }
