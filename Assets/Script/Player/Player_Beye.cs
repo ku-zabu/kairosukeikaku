@@ -58,6 +58,7 @@ public class Player_Beye : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
+        Debug.Log("Exit");
         stagemanager.unsetItem(true);
     }
 }

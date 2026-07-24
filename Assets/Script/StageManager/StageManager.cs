@@ -256,6 +256,8 @@ public class StageManager : MonoBehaviour
     public void Goal()
     {
         goal = true;
+        Input_able("End", true);
+        Input_able("Player", false);
         OpenText("’Eo¬Œ÷I");
     }
     
