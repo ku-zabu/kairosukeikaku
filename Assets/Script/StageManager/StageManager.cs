@@ -148,6 +148,7 @@ public class StageManager : MonoBehaviour
         foreach (var tree in trees)
             tree.ChangeMode(nowTime);
 
+        item = null;
         await UniTask.Delay(TimeSpan.FromSeconds(waitTime));
 
         for (int i = 0; i < 4; i++)
@@ -186,7 +187,13 @@ public class StageManager : MonoBehaviour
     /// <param name="getItem"></param>
     public void SetItem(ItemTemp getItem)
     {
-        if (getItem == null) return;
+        if (getItem == null)
+        {
+            buttons[4].interactable = false;
+            buttons[5].interactable = false;
+            buttons[6].interactable = false;
+            return;
+        }
         if (getItem.inversText != "")       
             buttons[4].interactable = true;
         else
@@ -219,13 +226,13 @@ public class StageManager : MonoBehaviour
     /// <summary> í≤Ç◊ÇÈ </summary>
     public void OnInvestigate()
     {
-        if (!buttons[4].interactable) return;
+        if (!buttons[4].interactable || item == null) return;
         OpenText(item.inversText);
     }
     ///<summary> éÊìæ </summary>
     public void OnAcquire()
     {
-        if (!buttons[5].interactable) return;
+        if (!buttons[5].interactable || item == null) return;
         OpenText(item.acquirText);
         itemList.Add(item.Acquir());
         unsetItem();
@@ -236,7 +243,7 @@ public class StageManager : MonoBehaviour
     ///<summary> çsìÆ </summary>
     public void OnAction()
     {
-        if (!buttons[6].interactable) return;
+        if (!buttons[6].interactable || item == null) return;
         OpenText(item.actionText);
         if(item.itemNo != 0)
             itemList.Remove(item.itemNo);
