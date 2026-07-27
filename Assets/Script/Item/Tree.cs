@@ -11,6 +11,7 @@ public class Tree : ItemTemp
     public bool[] setItem = new bool[3];
     public int nowTime = 1;
     Transform pos;
+    GameObject seed;
 
     private void Awake()
     {
@@ -19,10 +20,25 @@ public class Tree : ItemTemp
         for (int i = 0; i < mode.Length; i++) mode[i] = 1;
         nowTime = 1;
         pos = transform.Find("First/Terepo").transform;
+        seed = transform.Find("Seed").gameObject;
+        seed.SetActive(false);
     }
 
+    /// <summary>
+    /// ŽžŠÔ‚É‰ž‚¶‚Ä•Ï‰»
+    /// </summary>
+    /// <param name="i"></param>
     public void ChangeMode(int i)
     {
+        if (setItem[i])
+        {
+            seed.SetActive(true);
+        }
+        else
+        {
+            seed.SetActive(false);
+        }
+
         switch (i)
         {
             case 0:
@@ -48,6 +64,9 @@ public class Tree : ItemTemp
         ChangerSet();
     }
 
+    /// <summary>
+    /// Mode‚Å‚É‰ž‚¶‚Ä•Ï‰»
+    /// </summary>
     public override void ChangerSet()
     {
         switch (mode[nowTime])
@@ -104,6 +123,7 @@ public class Tree : ItemTemp
         {
             setItem[nowTime] = false;
             water[nowTime] = false;
+            for (int j = 0; j < water.Length; j++) water[j] = false;
             return itemNo;
         }
         return 0;
@@ -115,6 +135,7 @@ public class Tree : ItemTemp
         {
             case 1:
                 setItem[nowTime] = true;
+                seed.SetActive(true);
                 break;
 
             case 2:

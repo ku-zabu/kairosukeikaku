@@ -9,7 +9,7 @@ using UnityEngine.UI;
 
 public class StageManager : MonoBehaviour
 {
-    [SerializeField] Int32 waitTime;
+    [SerializeField] float waitTime;
     PlayerInput input;
     bool menu;
     List<Button> buttons = new List<Button>();
@@ -32,9 +32,19 @@ public class StageManager : MonoBehaviour
 
     [SerializeField] string exitScene;
 
+    GameObject subCamera;
+    Fade fade;
+
+    Player_Beye player;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     { 
+        subCamera = GameObject.Find("SubCamera").gameObject;
+        subCamera.SetActive(false);
+
+        fade = FindAnyObjectByType<Fade>();
+
         var parent = transform.Find("Canvas/ButtonList");
         for(int i = 0; i < parent.childCount; i++)
         {
@@ -73,6 +83,8 @@ public class StageManager : MonoBehaviour
         objSkins.AddRange(FindObjectsByType<ObjSkin>(FindObjectsSortMode.None));
         foreach( var obj in objSkins)
             obj.ChangeSkin(nowTime);
+
+        player = FindAnyObjectByType<Player_Beye>();
     }
 
     void Input_able(string name, bool a)
@@ -108,6 +120,8 @@ public class StageManager : MonoBehaviour
     /// <returns></returns>
     async UniTask ChangeTime()
     {
+        player.rb.linearVelocity = Vector3.zero;
+
         if (!menu) Input_able("Player", false);
         else       Input_able("UI", false);
 
@@ -115,6 +129,11 @@ public class StageManager : MonoBehaviour
         {
             buttons[i].interactable = false;
         }
+
+        subCamera.SetActive(true);
+
+        await UniTask.Yield();
+        fade.FadeStart(waitTime).Forget();
 
         foreach (var box in itemBoxs)
             box.ActiveChanger(nowTime);
@@ -129,7 +148,7 @@ public class StageManager : MonoBehaviour
         foreach (var tree in trees)
             tree.ChangeMode(nowTime);
 
-        await UniTask.Delay(waitTime);
+        await UniTask.Delay(TimeSpan.FromSeconds(waitTime));
 
         for (int i = 0; i < 4; i++)
         {
@@ -243,9 +262,16 @@ public class StageManager : MonoBehaviour
 
     public void OnCloseM()
     {
-        logParent.SetActive(false);
-        Input_able("Item", false);
-        Input_able("Player", true);
+        if (!goal)
+        {
+            logParent.SetActive(false);
+            Input_able("Item", false);
+            Input_able("Player", true);
+        }
+        else
+        {
+            OnEnd();
+        }
     }
 
     public bool ItemCheck(int i)

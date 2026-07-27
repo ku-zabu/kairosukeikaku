@@ -3,7 +3,7 @@ using UnityEngine.InputSystem;
 
 public class Player_Beye : MonoBehaviour
 {
-    Rigidbody rb;
+    public Rigidbody rb;
     PlayerInput input;
     [SerializeField] float moveSpeed;
     [SerializeField] float roteSpeed;
@@ -57,7 +57,6 @@ public class Player_Beye : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        Debug.Log("Exit");
         stagemanager.unsetItem(true);
     }
 }

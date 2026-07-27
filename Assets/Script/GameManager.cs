@@ -3,21 +3,26 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    static GameManager source;
+
     [SerializeField] AudioSource bgmSource;
     [SerializeField] AudioSource seSource;
     float2 values = new float2(0.5f, 0.5f);
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    void Awake()
     {
+        if(source != null && source != this)
+        {
+            Destroy(this.gameObject);
+            return;
+        }
+
+        source = this;
+
         DontDestroyOnLoad(gameObject);
         bgmSource.volume = values.x;
         seSource.volume = values.y;
-        GameManager[] managers = FindObjectsByType<GameManager>(FindObjectsSortMode.None);
-        if(managers.Length > 1)
-        {
-            Destroy(this.gameObject);
-        }
     }
 
     public float2 GetValues()
@@ -40,13 +45,13 @@ public class GameManager : MonoBehaviour
     {
         if(set)
         {
-            bgmSource.volume = bgmValue * 0.1f;
-            seSource.volume = seValue * 0.1f;
-        } else
-        {
-            bgmSource.volume = values.x;
-            seSource.volume = values.y;
-        }
+            values.x = bgmValue * 0.001f;
+            values.y = seValue * 0.001f;
+        } 
+
+        bgmSource.volume = values.x;
+        seSource.volume = values.y;
+        Debug.Log($"BGM: {bgmValue}, SE: {seValue}");
     }
 
 

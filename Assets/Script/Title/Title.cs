@@ -76,7 +76,7 @@ public class Title : MonoBehaviour
             case 1: //オプションを開く
                 option.SetActive(true);
                 var values = gameManager.GetValues();
-                Debug.Log(values);
+
                 bgmVolume.value = values.x * 1000;
                 seVolume.value = values.y * 1000;
                 bgmText.text = $"{bgmVolume.value * 0.1f:F1}%";
