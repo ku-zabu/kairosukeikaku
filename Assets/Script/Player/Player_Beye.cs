@@ -7,6 +7,7 @@ public class Player_Beye : MonoBehaviour
     PlayerInput input;
     [SerializeField] float moveSpeed;
     [SerializeField] float roteSpeed;
+    Animator anim;
 
     StageManager stagemanager;
 
@@ -15,15 +16,19 @@ public class Player_Beye : MonoBehaviour
         rb = GetComponent<Rigidbody>();
         input = FindAnyObjectByType<PlayerInput>();
         stagemanager = FindAnyObjectByType<StageManager>();
+        anim = GetComponentInChildren<Animator>();
     }
 
     void FixedUpdate()
     {
+        float mag = 0;
         if (Physics.SphereCast(transform.position + new Vector3(0, 1.1f, 0), 1.0f, -Vector3.up, out var hit, 0.2f)) 
         {
             var value = input.actions["Move"].ReadValue<Vector2>();
             var moveF = new Vector3(value.x, 0, value.y) * moveSpeed;
             rb.AddForce(moveF, ForceMode.Acceleration);
+
+            mag = value.magnitude;
 
             if(value != Vector2.zero)
             {
@@ -37,6 +42,8 @@ public class Player_Beye : MonoBehaviour
         {
             rb.AddForce(-Vector3.up * 3f, ForceMode.Impulse);
         }
+
+        anim.SetFloat("Value", mag);
     }
 
     private void OnTriggerEnter(Collider other)
