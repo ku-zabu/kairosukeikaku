@@ -134,6 +134,8 @@ public class StageManager : MonoBehaviour
 
         await UniTask.Yield();
         fade.FadeStart(waitTime).Forget();
+        await UniTask.Yield();
+
 
         foreach (var box in itemBoxs)
             box.ActiveChanger(nowTime);

@@ -124,6 +124,7 @@ public class Tree : ItemTemp
             setItem[nowTime] = false;
             water[nowTime] = false;
             for (int j = 0; j < water.Length; j++) water[j] = false;
+            seed.SetActive(false);
             return itemNo;
         }
         return 0;
