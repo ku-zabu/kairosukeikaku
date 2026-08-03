@@ -21,5 +21,7 @@ public class Watering_Can : ItemTemp
                 tree.water[mas] = true;
             }
         }
+
+        GameManager.source.PlaySe("Lever");
     }
 }

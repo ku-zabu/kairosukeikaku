@@ -306,3 +306,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
   bgmSource: {fileID: 415758904079941653}
   seSource: {fileID: 1317030647011124254}
+  bgmClips:
+  - {fileID: 8300000, guid: 305c9d47c59298b4292a3543bbab72c9, type: 3}
+  - {fileID: 8300000, guid: 2eec9586223f9c5428515843e52e20c7, type: 3}
+  seClips:
+  - {fileID: 8300000, guid: f65e94a008d5aa34d97b95e040cdc0a9, type: 3}
+  - {fileID: 8300000, guid: 63669ca6b3cabd14c986567d33702148, type: 3}

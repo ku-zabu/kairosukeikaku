@@ -85,6 +85,8 @@ public class StageManager : MonoBehaviour
             obj.ChangeSkin(nowTime);
 
         player = FindAnyObjectByType<Player_Beye>();
+
+        GameManager.source.ChangeBgm(false);
     }
 
     void Input_able(string name, bool a)
@@ -120,6 +122,8 @@ public class StageManager : MonoBehaviour
     /// <returns></returns>
     async UniTask ChangeTime()
     {
+        GameManager.source.PlaySe("Time");
+
         player.rb.linearVelocity = Vector3.zero;
 
         if (!menu) Input_able("Player", false);
@@ -301,4 +305,5 @@ public class StageManager : MonoBehaviour
     {
         SceneManager.LoadScene(exitScene);
     }
+
 }

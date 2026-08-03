@@ -3,11 +3,14 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    static GameManager source;
+    public static GameManager source;
 
     [SerializeField] AudioSource bgmSource;
     [SerializeField] AudioSource seSource;
     float2 values = new float2(0.5f, 0.5f);
+
+    [SerializeField] AudioClip[] bgmClips;
+    [SerializeField] AudioClip[] seClips;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -23,7 +26,11 @@ public class GameManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
         bgmSource.volume = values.x;
         seSource.volume = values.y;
+
+        bgmSource.clip = bgmClips[0];
     }
+
+
 
     public float2 GetValues()
     {
@@ -37,7 +44,6 @@ public class GameManager : MonoBehaviour
         {
             seSource.volume = seValue * 0.001f;
             seSource.Play();
-            Debug.Log(GetValues());
         }
     }
 
@@ -54,5 +60,35 @@ public class GameManager : MonoBehaviour
         Debug.Log($"BGM: {bgmValue}, SE: {seValue}");
     }
 
+    public void ChangeBgm(bool TorS)
+    {
+        if(TorS)
+        {
+            bgmSource.clip = bgmClips[0];
+            seSource.clip = seClips[0];
+        }
+        else
+        {
+            bgmSource.clip = bgmClips[1];
+        }
+
+        bgmSource.Play();
+    }
+
+    public void PlaySe(string name)
+    {
+        switch (name)
+        {
+            case "Lever":
+                seSource.clip = seClips[0];
+                break;
+
+            case "Time":
+                seSource.clip = seClips[1];
+                break;
+        }
+
+        seSource.Play();
+    }
 
 }
