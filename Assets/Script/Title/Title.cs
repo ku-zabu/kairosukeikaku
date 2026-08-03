@@ -15,7 +15,7 @@ public class Title : MonoBehaviour
     [SerializeField, Header("PlayerInput")] PlayerInput input;
     [SerializeField, Header("Animator")] Animator anima;
     int command = 3;
-    GameManager gameManager;
+
     [SerializeField, Header("BGMの音量")] Slider bgmVolume;
     [SerializeField, Header("SEの音量")] Slider seVolume;
 
@@ -26,7 +26,9 @@ public class Title : MonoBehaviour
     {
         AnimeD();
         option.SetActive(false);
-        gameManager = FindAnyObjectByType<GameManager>();
+
+        GameManager.source.ChangeBgm(true);
+
     }
 
     public void AnimeD()
@@ -75,7 +77,7 @@ public class Title : MonoBehaviour
 
             case 1: //オプションを開く
                 option.SetActive(true);
-                var values = gameManager.GetValues();
+                var values = GameManager.source.GetValues();
 
                 bgmVolume.value = values.x * 1000;
                 seVolume.value = values.y * 1000;
@@ -114,13 +116,13 @@ public class Title : MonoBehaviour
     /// <summary> 変更を適用 </summary>
     public void OnApply()
     {
-        gameManager.SetValues(true, bgmVolume.value, seVolume.value);
+        GameManager.source.SetValues(true, bgmVolume.value, seVolume.value);
         Operation(3);
     }
     /// <summary> 変更を破棄 </summary>
     public void OnCancel()
     {
-        gameManager.SetValues(false);
+        GameManager.source.SetValues(false);
         Operation(3);
     }
 
@@ -143,14 +145,13 @@ public class Title : MonoBehaviour
             bgmText.text = $"{bgmVolume.value * 0.1f:F1}%";
             seText.text = $"{seVolume.value * 0.1f:F1}%";
 
-            gameManager.Confirmation(bgmVolume.value, seVolume.value, volume.y != 0);
+            GameManager.source.Confirmation(bgmVolume.value, seVolume.value, volume.y != 0);
         }
     }
 
     public void SeUp()
     {
-        gameManager.Confirmation(bgmVolume.value, seVolume.value, true);
+        GameManager.source.Confirmation(bgmVolume.value, seVolume.value, true);
     }
-
 
 }
