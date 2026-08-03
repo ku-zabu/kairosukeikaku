@@ -57,7 +57,6 @@ public class GameManager : MonoBehaviour
 
         bgmSource.volume = values.x;
         seSource.volume = values.y;
-        Debug.Log($"BGM: {bgmValue}, SE: {seValue}");
     }
 
     public void ChangeBgm(bool TorS)
