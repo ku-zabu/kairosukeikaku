@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class ItemTemp : MonoBehaviour
 {
+    public bool hint;
+
     public int itemNo;
     /// <summary>
     /// ’²‚×‚é

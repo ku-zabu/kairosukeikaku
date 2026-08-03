@@ -18,6 +18,8 @@ public class StageManager : MonoBehaviour
     GameObject logParent;
     Text logText;
 
+    GameObject HintParent;
+
     public int nowTime = 1;
 
     ItemTemp item;
@@ -71,6 +73,9 @@ public class StageManager : MonoBehaviour
         logParent = transform.Find("Canvas/TextImage").gameObject;
         logText = logParent.transform.Find("LogText").GetComponent<Text>();
         logParent.SetActive(false);
+
+        HintParent = transform.Find("Canvas/HintImage").gameObject;
+        HintParent.SetActive(false);
 
         itemBoxs.AddRange(FindObjectsByType<ItemBox>(FindObjectsSortMode.None));
         foreach (var box in itemBoxs)
@@ -233,7 +238,10 @@ public class StageManager : MonoBehaviour
     public void OnInvestigate()
     {
         if (!buttons[4].interactable || item == null) return;
-        OpenText(item.inversText);
+        if(item.hint)
+            OpenHint();
+        else
+            OpenText(item.inversText);
     }
     ///<summary> Žæ“¾ </summary>
     public void OnAcquire()
@@ -273,10 +281,26 @@ public class StageManager : MonoBehaviour
         }
     }
 
+    void OpenHint()
+    {
+        HintParent.SetActive(true);
+        if (!goal)
+        {
+            Input_able("Player", false);
+            Input_able("Item", true);
+        }
+        else
+        {
+            Input_able("Player", false);
+            Input_able("End", true);
+        }
+    }
+
     public void OnCloseM()
     {
         if (!goal)
         {
+            HintParent.SetActive(false);
             logParent.SetActive(false);
             Input_able("Item", false);
             Input_able("Player", true);
