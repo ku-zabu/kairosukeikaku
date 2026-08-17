@@ -79,17 +79,6 @@
                 },
                 {
                     "name": "",
-                    "id": "49787ffb-ac6d-490c-adeb-4dc19ea13973",
-                    "path": "",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "Story",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "4e113bba-aa33-4328-9655-a7dcdf47e111",
                     "path": "<Keyboard>/d",
                     "interactions": "",
