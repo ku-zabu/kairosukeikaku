@@ -11,6 +11,7 @@ using UnityEngine.UI;
 public class Title : MonoBehaviour
 {
     [SerializeField, Header("OptionObject")] GameObject option;
+    [SerializeField, Header("StoryObject")] GameObject story;
     [SerializeField, Header("読み込みたいシーン")] private string gameScene;
     [SerializeField, Header("PlayerInput")] PlayerInput input;
     [SerializeField, Header("Animator")] Animator anima;
@@ -59,6 +60,18 @@ public class Title : MonoBehaviour
                 input.SwitchCurrentActionMap("Title");
                 input.currentActionMap.Enable();
                 break;
+            case 10: //ストーリーを開く
+                input.SwitchCurrentActionMap("Title");
+                input.currentActionMap.Disable();
+                input.SwitchCurrentActionMap("Story");
+                input.currentActionMap.Enable();
+                break;
+            case 11: //ストーリーを閉じる
+                input.SwitchCurrentActionMap("Story");
+                input.currentActionMap.Disable();
+                input.SwitchCurrentActionMap("Title");
+                input.currentActionMap.Enable();
+                break;
             default:
                 Debug.LogError("未割当");
                 break;
@@ -97,6 +110,14 @@ public class Title : MonoBehaviour
                 option.SetActive(false);
                 break;
 
+            case 10: //ストーリーを開く
+                story.SetActive(true);
+                break;
+
+            case 11: //ストーリーを閉じる
+                story.SetActive(false);
+                break;
+
             default:
                 Debug.LogError("未割当");
                 break;
@@ -111,7 +132,6 @@ public class Title : MonoBehaviour
     public void OnOption() { Operation(1); }
     /// <summary> QuitGame </summary>
     public void OnQuit() { Operation(2); }
-
     //----------Option----------
     /// <summary> 変更を適用 </summary>
     public void OnApply()
@@ -125,6 +145,10 @@ public class Title : MonoBehaviour
         GameManager.source.SetValues(false);
         Operation(3);
     }
+    /// <summary> OpenStory </summary>
+    public void OnStory() { Operation(10); }
+    /// <summary> CloseStory </summary>
+    public void OnClose() { Operation(11); }
 
     /// <summary> 切り替え </summary>
     /// <param name="id"></param>

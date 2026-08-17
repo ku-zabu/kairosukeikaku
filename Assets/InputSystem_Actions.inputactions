@@ -25,6 +25,15 @@
                     "initialStateCheck": false
                 },
                 {
+                    "name": "Story",
+                    "type": "Button",
+                    "id": "0a795141-445b-4b33-bb79-7ddf6330e6a5",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Quit",
                     "type": "Button",
                     "id": "d7113df4-fe15-4595-9514-843adb61226b",
@@ -60,11 +69,33 @@
                 {
                     "name": "",
                     "id": "eb2ddfe1-5d56-44c8-86af-34dce286eadd",
-                    "path": "<Keyboard>/d",
+                    "path": "<Keyboard>/f",
                     "interactions": "",
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Quit",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "49787ffb-ac6d-490c-adeb-4dc19ea13973",
+                    "path": "",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Story",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "4e113bba-aa33-4328-9655-a7dcdf47e111",
+                    "path": "<Keyboard>/d",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Story",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
@@ -199,6 +230,34 @@
                     "action": "SE",
                     "isComposite": false,
                     "isPartOfComposite": true
+                }
+            ]
+        },
+        {
+            "name": "Story",
+            "id": "e3d1006f-033b-460c-abe6-7e690f82ab20",
+            "actions": [
+                {
+                    "name": "Close",
+                    "type": "Button",
+                    "id": "a7560d90-64ee-4f86-950a-7f06bc34c0e3",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "7918cf0a-1627-449b-82b8-80e40c915062",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Close",
+                    "isComposite": false,
+                    "isPartOfComposite": false
                 }
             ]
         },
