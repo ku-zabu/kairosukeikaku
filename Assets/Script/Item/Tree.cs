@@ -24,6 +24,19 @@ public class Tree : ItemTemp
         seed.SetActive(false);
     }
 
+    bool Check()
+    {
+        if (setItem[0])
+        {
+            return water[0] || water[1];
+        }
+        else if(setItem[1])
+        {
+            return water[1];
+        }
+        return false;
+    }
+
     /// <summary>
     /// ŠÔ‚É‰‚¶‚Ä•Ï‰»
     /// </summary>
@@ -53,7 +66,7 @@ public class Tree : ItemTemp
             case 2:
                 if (setItem[0] && water[1])
                     mode[2] = mode[1] + 1;
-                else if(!setItem[0] && !water[0] && setItem[1] && water[1])//‚±‚±‚ğC³
+                else if(Check())
                     mode[2] = 2;
                 else
                     mode[2] = mode[1];
