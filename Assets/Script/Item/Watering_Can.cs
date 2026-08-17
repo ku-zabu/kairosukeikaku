@@ -16,7 +16,7 @@ public class Watering_Can : ItemTemp
 
         foreach (Tree tree in trees)
         {
-            if (tree.setItem[mas] || tree.mode[mas] != 1)
+            if (tree.setItem[0] || tree.setItem[1] || tree.setItem[2])
             {
                 tree.water[mas] = true;
             }
