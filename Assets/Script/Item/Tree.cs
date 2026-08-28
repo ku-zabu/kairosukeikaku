@@ -136,7 +136,8 @@ public class Tree : ItemTemp
         {
             setItem[nowTime] = false;
             water[nowTime] = false;
-            for (int j = 0; j < water.Length; j++) water[j] = false;
+            for (int w = 0; w < water.Length; w++) water[w] = false;
+            for (int m = 0; m < mode.Length; m++) mode[m] = 1;
             seed.SetActive(false);
             return itemNo;
         }
